@@ -10,4 +10,8 @@ class Line {
     start = a;
     end = b;
   }
+
+  public PVector Intersect(Line b) {
+    return LineHelper.Intersect(this, b);
+  }
 }
