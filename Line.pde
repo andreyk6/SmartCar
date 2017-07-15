@@ -15,11 +15,20 @@ class Line {
     end = b;
   }
 
+  //Return intersection point or null
   public PVector Intersect(Line b) {
     return LineHelper.Intersect(this, b);
   }
 
   public void draw() {
     line(start.x, start.y, end.x, end.y);
+  }
+
+  public Line copy() {
+    return new Line(start.x, start.y, end.x, end.y);
+  }
+  
+  public float length(){
+    return start.dist(end);
   }
 }
