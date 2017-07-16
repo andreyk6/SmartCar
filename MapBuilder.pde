@@ -67,7 +67,7 @@ class MapBuilder {
           newWall.end = nearestPoint;
         }
 
-        map.walls.add(newWall.copy());
+    map.walls.add(newWall.copy());
       }
 
       //Reset the wall and the state
