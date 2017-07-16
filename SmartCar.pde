@@ -3,14 +3,22 @@ Map map;
 Car car;
 
 void setup() {
-  size(600, 600);
-  intersectionDemo = new IntersectionDemo(10);
+  size(800, 800);
+
+  //Init map (with MapBuilder inside)
   map = new Map();
-  car = new Car(30, width/2, height/2, 10);
+
+  //Create car and pass map (for objects detection)
+  car = new Car(10, width/2, height/2, 10, map);
+
+  //Init sensors
+  for (int angle=-90; angle<=90; angle+=10) {
+    car.Sensors.add(new Sensor(200, angle, car.Map, car));
+  };
 }
+
 void draw() {
   background(255);
   map.draw();
   car.draw();
-  //intersectionDemo.draw();
 }
