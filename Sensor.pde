@@ -4,8 +4,8 @@ class Sensor {
   Map Map;
   Car Car;
 
-  Sensor(int maxDistance, float angle, Map map, Car car) {
-    Map = map;
+  Sensor(int maxDistance, float angle, Car car) {
+    Map = car.Map;
     Car = car;
     rayVector = PVector.fromAngle(radians(angle));
     rayVector.mult(maxDistance);

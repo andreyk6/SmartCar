@@ -13,7 +13,7 @@ void setup() {
 
   //Init sensors
   for (int angle=-90; angle<=90; angle+=10) {
-    car.Sensors.add(new Sensor(200, angle, car.Map, car));
+    car.Sensors.add(new Sensor(200, angle, car));
   };
 }
 
