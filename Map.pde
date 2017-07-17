@@ -1,10 +1,8 @@
 class Map { //<>// //<>//
   ArrayList<Line> walls;
-  MapBuilder mapBuilder;
-  
+
   Map() {
     walls = new ArrayList<Line>();
-    mapBuilder = new MapBuilder(this);
   }
 
   void draw() {
@@ -12,7 +10,5 @@ class Map { //<>// //<>//
       stroke(#713636);
       walls.get(i).draw();
     }
-    
-    mapBuilder.process();
   }
 }

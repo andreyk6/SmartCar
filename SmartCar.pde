@@ -1,5 +1,6 @@
 IntersectionDemo intersectionDemo;
 Map map;
+MapBuilder mapBuilder;
 Car car;
 
 void setup() {
@@ -7,6 +8,8 @@ void setup() {
 
   //Init map (with MapBuilder inside)
   map = new Map();
+  mapBuilder = new MapBuilder(map);
+
 
   //Create car and pass map (for objects detection)
   car = new Car(10, width/2, height/2, 10, map);
@@ -19,6 +22,7 @@ void setup() {
 
 void draw() {
   background(255);
+  mapBuilder.process();
   map.draw();
   car.draw();
 }

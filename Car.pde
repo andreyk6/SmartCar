@@ -52,9 +52,9 @@ class Car {
       //Update angle
       float angle = 0;
       if ( key == 'a') {
-        angle = -2;
+        angle = -4;
       } else if ( key == 'd') {
-        angle = 2;
+        angle = 4;
       } else {
         normalizeRudder();
       }
@@ -90,5 +90,10 @@ class Car {
       Rudder = PVector.fromAngle(Rudder.heading() + radians(5));
     if (Rudder.heading() > radians(0))
       Rudder = PVector.fromAngle(Rudder.heading() - radians(5));
+
+    if (Rudder.heading() > radians(0) && Rudder.heading() < radians(5))
+      Rudder = PVector.fromAngle(radians(0));
+    if (Rudder.heading() < radians(0) && Rudder.heading() > radians(-5))
+      Rudder = PVector.fromAngle(radians(0));
   }
 }
