@@ -1,8 +1,8 @@
 class Map { //<>// //<>//
-  ArrayList<Line> walls;
+  ArrayList<Wall> walls;
 
   Map() {
-    walls = new ArrayList<Line>();
+    walls = new ArrayList<Wall>();
   }
 
   void draw() {
@@ -10,5 +10,11 @@ class Map { //<>// //<>//
       stroke(#713636);
       walls.get(i).draw();
     }
+  }
+
+  void save(String fileName) {
+  }
+
+  void load(String fileName) {
   }
 }

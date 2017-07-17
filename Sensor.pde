@@ -13,13 +13,16 @@ class Sensor {
 
   void draw() {
     stroke(220);
-    getRay().draw();
+    Line ray = getRay();
+    ray.draw();
     stroke(0);
 
     PVector intersectionPoint = Intersection();
     if (intersectionPoint != null) {
       ellipse(intersectionPoint.x, intersectionPoint.y, 6, 6);
-      println(intersectionPoint.z);
+      fill(0);
+      text((int)intersectionPoint.z, ray.end.x, ray.end.y);
+      fill(255);
     }
   }
 
@@ -40,7 +43,7 @@ class Sensor {
       PVector intersectionPoint =  ray.Intersect(line);
 
       if (intersectionPoint == null) 
-      continue;
+        continue;
 
       if (result == null) {
         result = intersectionPoint;

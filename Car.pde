@@ -2,6 +2,7 @@ class Car {
   int Size;
   PVector Direction;
   PVector Position;
+  PVector DefaultPosition;
   PVector Rudder;
   float Speed, MaxSpeed;
   Map Map;
@@ -12,6 +13,7 @@ class Car {
     Map = map;
     Size = size;
     Position = new PVector(x, y);
+    DefaultPosition = new PVector(x, y);
     MaxSpeed = maxSpeed;
     Direction = PVector.fromAngle(radians(0));
     Rudder = PVector.fromAngle(radians(0));

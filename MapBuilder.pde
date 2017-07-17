@@ -1,6 +1,6 @@
 class MapBuilder {
   Map map;
-  int wallAddingTreshold = 7;
+  int wallAddingTreshold = 10;
 
   MapBuilder(Map map) {
     this.map = map;
@@ -14,11 +14,11 @@ class MapBuilder {
     }
   }
 
-  //1 - line removed and key not released
+  //1 - wall removed and key not released
   //0 - waiting for actions
-  int removingState = 0;
+  private int removingState = 0;
 
-  void processWallRemoving() {
+  private void processWallRemoving() {
     //Remove wall if user press Z first time
     if (keyPressed && removingState == 0) {
       if (key == 'Z') {
@@ -36,14 +36,14 @@ class MapBuilder {
 
   //0 - waiting for actions
   //1 - first point added
-  int wallAddingState = 0;
+  private int wallAddingState = 0;
   //Temp var for creating the wall
-  Line newWall = null;
+  private Wall newWall = null;
 
   private void processWallAdding() {
     //Init newWall and add first point when mouse pressed   
     if (mousePressed && wallAddingState == 0) {
-      newWall = new Line(mouseX, mouseY, mouseX, mouseY);
+      newWall = new Wall(mouseX, mouseY, mouseX, mouseY);
       //Set start to nearest point
       PVector nearestPoint = findNearestPoint(new PVector(mouseX, mouseY), wallAddingTreshold);
       if (nearestPoint !=null) {
@@ -67,7 +67,7 @@ class MapBuilder {
           newWall.end = nearestPoint;
         }
 
-    map.walls.add(newWall.copy());
+        map.walls.add(newWall.copy());
       }
 
       //Reset the wall and the state
