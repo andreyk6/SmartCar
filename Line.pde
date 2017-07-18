@@ -27,8 +27,36 @@ class Line {
   public Line copy() {
     return new Line(start.x, start.y, end.x, end.y);
   }
-  
-  public float length(){
+
+  public float length() {
     return start.dist(end);
+  }
+
+  public PVector getDistance( float x, float y ) {
+    PVector result = new PVector();
+    float dx = end.x - start.x; 
+    float dy = end.y - start.y; 
+    float d = sqrt( dx*dx + dy*dy ); 
+    float ca = dx/d; // cosine
+    float sa = dy/d; // sine 
+
+    float mx = (-start.x+x)*ca + (-start.y+y)*sa;
+
+    if ( mx <= 0 ) {
+      result.x = start.x; 
+      result.y = start.y;
+    } else if ( mx >= d ) {
+      result.x = end.x; 
+      result.y = end.y;
+    } else {
+      result.x = start.x + mx*ca; 
+      result.y = start.y + mx*sa;
+    }
+
+    float dx2 = x - result.x; 
+    float dy2 = y - result.y; 
+    result.z = sqrt( dx2*dx2 + dy2*dy2 ); 
+
+    return result;
   }
 }

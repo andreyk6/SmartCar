@@ -20,6 +20,9 @@ class Car {
   }
 
   public void draw() {
+    //Check walls around
+    checkWallsIntersection();
+
     //Update speed and dirrection
     processRudderMovement();
     processSpeedControl();
@@ -47,6 +50,17 @@ class Car {
     ellipse(width/2, height-100, 30, 30);
     PVector rudderNormalized = PVector.fromAngle(Rudder.heading() - radians(90));
     line(width/2, height-100, width/2 + rudderNormalized.x*15, height-100+rudderNormalized.y*15);
+  }
+
+  private void checkWallsIntersection() {
+    for (int i=0; i<map.walls.size(); i++) {
+      Wall wall = map.walls.get(i);
+      PVector distance = wall.getDistance(Position.x, Position.y);
+      if (distance.z  <= Size/2) {
+        Position = DefaultPosition.copy();
+        return;
+      }
+    }
   }
 
   private void processRudderMovement() {    
