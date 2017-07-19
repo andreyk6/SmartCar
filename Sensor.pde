@@ -26,6 +26,18 @@ class Sensor {
     }
   }
 
+  float getDistance() {
+    PVector intersection = this.Intersection();
+    if (intersection != null) {
+      return intersection.z;
+    }
+    return rayVector.mag();
+  }
+
+  float getMaxDistance() {
+    return rayVector.mag();
+  }
+
   Line getRay() {
     float fromX = Car.Position.x;
     float fromY = Car.Position.y;
